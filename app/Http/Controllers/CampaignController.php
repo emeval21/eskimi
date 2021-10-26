@@ -35,20 +35,7 @@ class CampaignController extends Controller
     {
         //
     }
-
-    public function submit(Request $request) {
-        $this->validate($request, [
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'message' => 'required',
-        ]);
-
-        /*
-          Add mail functionality here.
-        */
-
-        return response()->json(null, 200);
-    }
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -58,9 +45,6 @@ class CampaignController extends Controller
     public function store(Request $request)
     {
         //
-        
-        //return response()->json( ['err' => $request->file('attachments'), 'statusText' => "After image processor"], 401 );
-        
         $this->validate($request, [
             'name' => 'required',
             'daily_budget' => 'required',
@@ -199,31 +183,7 @@ class CampaignController extends Controller
             $thumb->save('storage/campaign_images/'.$thumbStore); */
 		
         }
-        // if($request->hasFile('campaign_image')){
-        //     // Get filename with the extension
-        //     $filenameWithExt = $request->file('campaign_image')->getClientOriginalName();
-        //     // Get just filename
-        //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        //     // Get just ext
-        //     $extension = $request->file('campaign_image')->getClientOriginalExtension();
-        //     // Filename to store
-        //     $fileNameToStore= $filename.'_'.time().'.'.$extension;
-        //     // Upload Image
-        //     $path = $request->file('campaign_image')->storeAs('public/campaign_images', $fileNameToStore);
-		
-        //     // make thumbnails
-        //     /* $thumbStore = 'thumb.'.$filename.'_'.time().'.'.$extension;
-        //     $thumb = Image::make($request->file('campaign_image')->getRealPath());
-        //     $thumb->resize(80, 80);
-        //     $thumb->save('storage/campaign_images/'.$thumbStore); */
-		
-        // } else {
-        //     $fileNameToStore = 'default.jpg';
-        // }
-        //return response()->json( ['err' => $request->input('campaign_id') , 'statusText' => "After image processor"], 401 );
-        //
-        //$campaign = $request->isMethod('put') ? Campaign::findOrFail($request->campaign_id) : new Campaign;
-
+        
         
         $campaign->id = $request->input('campaign_id');
         $campaign->name = $request->input('name');
