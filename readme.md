@@ -2,8 +2,10 @@
 
 1. Create and add database credentials in the .env file
 2. Framework and dependencies version can be located at composer.json file in the root folder
-3. On your terminal, in the root folder run php artisan migrate
-4. run php artisan db:seed
+3. On your terminal run composer update
+4. After update, run php artisan cache:clear
+5. run php artisan migrate
+6. run php artisan db:seed
 
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
